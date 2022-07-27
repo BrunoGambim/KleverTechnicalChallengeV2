@@ -1,0 +1,33 @@
+syntax = "proto3";
+package LearningGRPC;
+import "google/protobuf/empty.proto";
+
+
+option go_package = "relembrando_2/services/upvote_service/upvote_pb";
+
+
+service UpvoteService {
+    rpc AddUpvoteToComment(AddUpvoteRequest) returns (google.protobuf.Empty);
+    rpc DeleteUpvoteFromComment(DeleteUpvoteRequest) returns (google.protobuf.Empty);
+}
+
+enum UpvoteType{
+    upvote = 0;
+    downvote = 1;
+}
+
+message AddUpvoteRequest {
+    string commentId = 1;
+    UpvoteType upvoteType = 2;
+}
+
+message DeleteUpvoteRequest {
+    string commentId = 1;
+    string upvoteId = 2;
+}
+
+message UpvoteResponse {
+    string id = 1;
+    string upvoteType = 2;
+    string createdAt = 3;
+}

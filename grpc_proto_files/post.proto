@@ -1,0 +1,20 @@
+syntax = "proto3";
+package LearningGRPC;
+
+option go_package = "relembrando_2/services/post_service/post_pb";
+
+
+service PostService {
+    rpc GetPostById(PostIdRequest) returns (PostResponse);
+}
+
+message PostIdRequest {
+    string id = 1;
+}
+
+message PostResponse {
+    string id = 1;
+    string userId = 2;
+    string title = 3;
+    string body = 4;
+}

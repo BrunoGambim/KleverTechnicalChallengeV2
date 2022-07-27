@@ -1,0 +1,1 @@
+{"buildTargets":["clean","comment_service","final","post_service","upvote_service"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

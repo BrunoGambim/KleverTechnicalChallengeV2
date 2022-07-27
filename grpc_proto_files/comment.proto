@@ -1,0 +1,32 @@
+syntax = "proto3";
+package LearningGRPC;
+import "google/protobuf/empty.proto";
+import "grpc_proto_files/post.proto";
+import "grpc_proto_files/upvote.proto";
+
+
+option go_package = "relembrando_2/services/comment_service/comment_pb";
+
+
+service CommentService {
+    rpc GetCommentById(IdRequest) returns (CommentResponse);
+    rpc DeleteCommentById(IdRequest) returns (google.protobuf.Empty);
+    rpc GetAllComments(google.protobuf.Empty) returns (stream CommentResponse);
+    rpc InsertComment(CommentRequest) returns (google.protobuf.Empty);
+}
+
+message IdRequest {
+    string id = 1;
+}
+
+message CommentRequest {
+    string message = 1;
+    string postId = 2;
+}
+
+message CommentResponse {
+    string id = 1;
+    string message = 2;
+    PostResponse post = 3;
+    repeated UpvoteResponse upvotes = 4;
+}
